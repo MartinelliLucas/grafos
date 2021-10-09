@@ -65,4 +65,9 @@ public class Grafo {
 		return A[i][j];
 	}
 
+	public int vertices() {
+		return A.length;
+	}
+	
+	
 }
