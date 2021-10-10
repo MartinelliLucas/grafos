@@ -1,16 +1,21 @@
 package grafos;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Random;
 import java.util.Set;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class Grafo {
 
 	// grafos por matriz de adyacencia
 	private boolean[][] A;
+	private double [][] pesos;
 
 	// la cantidad de vertices esta predeterminada desde el constructor
 	public Grafo(int vertices) {
 		A = new boolean[vertices][vertices]; // all false, no aristas
+		pesos = new double[vertices][vertices];
 	}
 
 	// getters and setters aristas
@@ -21,8 +26,16 @@ public class Grafo {
 		verificarVertice(j);
 		verificarLoop(i, j);
 		A[i][j] = A[j][i] = true;
+		double random = ThreadLocalRandom.current().nextDouble(0,1);
+		pesos[i][j]= pesos[j][i]= random;
 	}
-
+	
+	public double pesoArista(int i, int j) {
+		return pesos[i][j];
+	}
+	public double [][] damePesos(){
+		return pesos;
+	}
 	private void verificarLoop(int i, int j) {
 		if (i == j) {
 			throw new IllegalArgumentException("No se permiten loops: (" + i + ", " + j + ")");
