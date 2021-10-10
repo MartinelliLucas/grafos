@@ -1,8 +1,11 @@
-package grafos;
+package bfs;
 
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
+
+import grafos.Grafo;
+
 
 public class BFS {
 

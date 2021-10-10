@@ -1,10 +1,13 @@
-package grafos;
+package bfs;
 
 import static org.junit.Assert.*;
 
 import java.util.Set;
 
 import org.junit.Test;
+
+import grafos.Assert;
+import grafos.Grafo;
 
 public class BFSTest {
 
