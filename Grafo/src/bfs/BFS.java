@@ -6,7 +6,6 @@ import java.util.Set;
 
 import grafos.Grafo;
 
-
 public class BFS {
 
 	private static boolean[] marcados;
@@ -37,6 +36,7 @@ public class BFS {
 
 		return ret;
 	}
+	
 
 	private static void agregarVecinosPendientes(Grafo g, int i) {
 		for (int vertice : g.vecinos(i)) {
