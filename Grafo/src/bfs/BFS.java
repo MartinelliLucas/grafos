@@ -36,7 +36,6 @@ public class BFS {
 
 		return ret;
 	}
-	
 
 	private static void agregarVecinosPendientes(Grafo g, int i) {
 		for (int vertice : g.vecinos(i)) {

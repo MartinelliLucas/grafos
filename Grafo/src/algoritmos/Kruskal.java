@@ -1,8 +1,5 @@
 package algoritmos;
 
-import java.util.HashSet;
-import java.util.Set;
-
 import bfs.BFS;
 import grafos.Grafo;
 
@@ -26,16 +23,14 @@ public class Kruskal {
 						posX = k;
 						posY = j;
 
-						if (!BFS.alcanzables(BGM, posX).contains(posY)) { 
+						if (!BFS.alcanzables(BGM, posX).contains(posY)) {
 							BGM.agregarAristaConPeso(posX, posY, pesoMin);
 						}
 					}
 				}
-
 			}
 			i++;
 		}
-
 		return BGM;
 	}
 
