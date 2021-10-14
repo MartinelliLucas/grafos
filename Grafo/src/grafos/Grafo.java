@@ -12,7 +12,8 @@ public class Grafo {
 	private boolean[][] A;
 	private double[][] pesos;
 
-	// la cantidad de vertices esta predeterminada desde el constructor
+	// la cantidad de vertices esta predeterminada desde el constructor	
+	
 	public Grafo(int vertices) {
 		A = new boolean[vertices][vertices]; // all false, no aristas
 		pesos = new double[vertices][vertices];
