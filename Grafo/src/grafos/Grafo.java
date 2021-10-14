@@ -17,7 +17,7 @@ public class Grafo {
 	}
 
 	// getters and setters aristas
-
+	// Agrega arista con un peso double random entre 0 y 1
 	public void agregarArista(int i, int j) {
 		// mucho codigo defensivo para poco ccodigo de negocio esta muy desbalanceado
 		verificarVertice(i);
@@ -27,7 +27,14 @@ public class Grafo {
 		double random = ThreadLocalRandom.current().nextDouble(0, 1);
 		pesos[i][j] = pesos[j][i] = random;
 	}
-
+	// Agrega arista con peso predefinido por parametro
+	public void agregarAristaConPeso (int i, int j, double peso) {
+		verificarVertice(i);
+		verificarVertice(j);
+		verificarLoop(i, j);
+		A[i][j] = A[j][i] = true;
+		pesos[i][j] = pesos[j][i] = peso;
+	}
 	public double pesoArista(int i, int j) {
 		return pesos[i][j];
 	}

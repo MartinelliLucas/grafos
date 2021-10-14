@@ -25,7 +25,7 @@ public class Kruskal {
 					}
 				}
 			}
-			if (!BFS.alcanzables(BGM, 0).contains(posY)) { // nose que valor se usa para chequear si esta contenido en alcanzables.
+			if (!BFS.alcanzables(BGM, posX).contains(posY)) { // nose que valor se usa para chequear si esta contenido en alcanzables.
 				BGM.agregarArista(posX, posY);
 			}
 		}
