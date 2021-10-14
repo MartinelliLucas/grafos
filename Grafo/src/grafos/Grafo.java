@@ -1,6 +1,8 @@
 package grafos;
 
 import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Set;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -93,5 +95,37 @@ public class Grafo {
 	public int vertices() {
 		return A.length;
 	}
-
+	
+	public boolean esConexoBFS(int inicial) {
+		verificarVertice(inicial);
+		
+		Set<Integer> marcados = new HashSet<Integer>();
+		List<Integer> pendientes = new LinkedList<Integer>();
+		pendientes.add(inicial);
+		
+		while (pendientes.size() != 0) {
+			//obtenemos el primero de la lista.
+			int vertice = pendientes.get(0);
+			//marco al vertice obtenido.
+			marcados.add(vertice);
+			
+			//agregamos a la lista de pendientes a todos sus vecinos no marcados.
+			for (Integer elem : this.vecinos(vertice)) {
+				if (!marcados.contains(elem))
+					pendientes.add(elem);
+			}
+			//eliminamos de pendientes al vertice obtenido.
+			pendientes.remove(0);
+		}
+		//si la cant de vertices alcanzados es igual a los vertices del grafo, es conexo.
+		return marcados.size() == this.tamanio();
+	}
+	
+	public Set<Integer> alcanzables (int inicial){
+		Set<Integer> alcanzables = new HashSet<Integer>();
+		
+		//TODO bfs guardando los vertices alcanzables desde el vertice inicial.
+		
+		return alcanzables;
+	}
 }
