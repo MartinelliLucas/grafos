@@ -1,44 +1,41 @@
 package algoritmos;
 
-import org.junit.Assert;
+import static org.junit.Assert.*;
+
 import org.junit.Test;
 
 import bfs.BFS;
 import grafos.Grafo;
 
 public class KruskalTest {
-
-	@Test
-	public void kruskalTest() {
-		Grafo g = new Grafo(3);
-		g.agregarAristaConPeso(0, 1, 1.5);
-		g.agregarAristaConPeso(0, 2, 2.5);
-		g.agregarAristaConPeso(1, 2, 3.5);
-		double[][] expected = new double[3][3];
-		expected[0][1] = 1.5;
-		expected[0][2] = 2.5;
-		expected[1][0] = 1.5;
-		expected[2][0] = 2.5;
-
-		Grafo nuevo = Kruskal.aplicarKruskal(g);
-		Assert.assertArrayEquals(expected, nuevo.damePesos());
-
+	
+	
+	private Grafo crearGrafo() {
+		Grafo g = new Grafo(5);
+		g.agregarAristaConPeso(0, 1, 5);
+		g.agregarAristaConPeso(0, 2, 25);
+		g.agregarAristaConPeso(1, 2, 10);
+		g.agregarAristaConPeso(2, 3, 15);
+		g.agregarAristaConPeso(2, 4, 30);
+		g.agregarAristaConPeso(3, 4, 20);
+				
+		return g;
 	}
-
-	@Test
-	public void conexoKruskalTest() {
-		Grafo g = new Grafo(3);
-		g.agregarAristaConPeso(0, 1, 2.5);
-		g.agregarAristaConPeso(0, 2, 1.5);
-		g.agregarAristaConPeso(1, 2, 3.5);
-		double[][] expected = new double[3][3];
-		expected[0][1] = 2.5;
-		expected[0][2] = 1.5;
-		expected[1][0] = 2.5;
-		expected[2][0] = 1.5;
-
-		Grafo nuevo = Kruskal.aplicarKruskal(g);
-		Assert.assertTrue(BFS.esConexo(nuevo));
+	@Test (expected = IllegalArgumentException.class)
+	public void grafoNoConexo() {
+		Grafo g = crearGrafo();
+		g.eliminarArista(2, 4);
+		g.eliminarArista(3, 4);
+		
+		Kruskal.kruskalBFS(g);
 	}
-
+	
+	@Test
+	public void esAGM() {
+		Grafo g = crearGrafo();
+		Grafo AGM = Kruskal.kruskalBFS(g);
+	
+		assertEquals(g.tamanio(),  AGM.tamanio());
+		assertTrue(BFS.esConexo(AGM));
+	}
 }
