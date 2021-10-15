@@ -15,10 +15,10 @@ public class BFS {
 		if (grafo == null) {
 			throw new IllegalArgumentException("El grafo no existe! (null)");
 		}
-		if (grafo.vertices() == 0) {
+		if (grafo.tamanio() == 0) {
 			return true;
 		}
-		return alcanzables(grafo, 0).size() == grafo.vertices();
+		return alcanzables(grafo, 0).size() == grafo.tamanio();
 	}
 
 	public static Set<Integer> alcanzables(Grafo g, int origen) {
@@ -49,7 +49,7 @@ public class BFS {
 	private static void inicializar(Grafo g, int origen) {
 		L = new ArrayList<Integer>();
 		L.add(origen);
-		marcados = new boolean[g.vertices()];
+		marcados = new boolean[g.tamanio()];
 	}
 
 }

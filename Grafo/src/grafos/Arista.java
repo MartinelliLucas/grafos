@@ -21,6 +21,15 @@ public class Arista implements Comparable<Arista>{
 	public double getPeso() {
 		return this.peso;
 	}
+	
+	public int getVerticeOrigen() {
+		return verticeOrigen;
+	}
+
+	public int getVerticeDestino() {
+		return verticeDestino;
+	}
+
 	@Override
 	public int compareTo(Arista e) {
 		int ret = 0;
