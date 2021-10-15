@@ -126,4 +126,5 @@ public class Grafo {
 	public Set<Arista> getAristas() {
 		return E;
 	}
+	
 }

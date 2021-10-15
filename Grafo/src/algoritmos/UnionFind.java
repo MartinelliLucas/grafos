@@ -1,20 +1,32 @@
 package algoritmos;
 
 public class UnionFind {
-
 	
-	static int find(int parent[], int i)
-	{
-	    if (parent[i] == -1)
-	        return i;
-	    return find(parent, parent[i]);
+	private static int [] A ;
+	
+	public UnionFind (int vertices) {
+		int i= 0;
+		while (i < vertices) {
+			A[i]= i;
+			i++;
+		}
+		
 	}
-	   
+	static int root (int i) {
+		while (A[i]!= i) {
+			i = A[i];
+		}
+		return i;
+	}
 	
-	static void Union(int parent[], int x, int y)
+	boolean find (int i, int j) {
+		return root(i) == root (j);
+	}
+	
+	static void Union(int i, int j)
 	{
-	    int xset = find(parent, x);
-	    int yset = find(parent, y);
-	    parent[xset] = yset;
+		int ri = root(i);
+		int rj = root (j);
+		A[ri] = rj;
 	}
 }

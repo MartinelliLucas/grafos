@@ -1,8 +1,5 @@
 package algoritmos;
 
-import java.util.HashSet;
-import java.util.Set;
-
 import bfs.BFS;
 import grafos.Grafo;
 
@@ -26,12 +23,12 @@ public class Kruskal {
 						posX = k;
 						posY = j;
 
+
 						if (!BFS.alcanzables(AGM, posX).contains(posY)) {
 							AGM.agregarAristaConPeso(posX, posY, pesoMin);
 						}
 					}
 				}
-
 			}
 			i++;
 		}
@@ -40,7 +37,7 @@ public class Kruskal {
 	}
 	
 	public Grafo KruskalBFS (Grafo grafo) {
-		Grafo AGM = new Grafo(grafo.tamanio())
+		Grafo AGM = new Grafo(grafo.tamanio());
 	}
 
 }
