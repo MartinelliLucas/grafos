@@ -10,11 +10,11 @@ public class Kruskal {
 
 	public static Grafo aplicarKruskal(Grafo grafo) {
 
-		Grafo BGM = new Grafo(grafo.tamanio());
+		Grafo AGM = new Grafo(grafo.tamanio());
 		int i = 1;
 		int posX = 0;
 		int posY = 0;
-		double pesoMin = 100.0;
+		
 		while (i <= grafo.tamanio() - 1) {
 			for (int k = 0; k < grafo.tamanio(); k++) {
 				for (int j = 0; j < grafo.tamanio(); j++) {
@@ -26,8 +26,8 @@ public class Kruskal {
 						posX = k;
 						posY = j;
 
-						if (!BFS.alcanzables(BGM, posX).contains(posY)) { 
-							BGM.agregarAristaConPeso(posX, posY, pesoMin);
+						if (!BFS.alcanzables(AGM, posX).contains(posY)) {
+							AGM.agregarAristaConPeso(posX, posY, pesoMin);
 						}
 					}
 				}
@@ -36,7 +36,11 @@ public class Kruskal {
 			i++;
 		}
 
-		return BGM;
+		return AGM;
+	}
+	
+	public Grafo KruskalBFS (Grafo grafo) {
+		Grafo AGM = new Grafo(grafo.tamanio())
 	}
 
 }
