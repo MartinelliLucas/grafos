@@ -30,12 +30,20 @@ public class KruskalTest {
 		Kruskal.kruskalBFS(g);
 	}
 	
+	@Test (expected = IllegalArgumentException.class)
+	public void grafoNoExistente() {
+		Kruskal.kruskalBFS(null);
+	}
+	
+	//verifica que cant aristas = cant vertices -1 y que el AGM sea conexo.
 	@Test
 	public void esAGM() {
 		Grafo g = crearGrafo();
 		Grafo AGM = Kruskal.kruskalBFS(g);
 	
-		assertEquals(g.tamanio(),  AGM.tamanio());
+		assertEquals(g.tamanio()-1,  AGM.getAristas().size());
 		assertTrue(BFS.esConexo(AGM));
 	}
+	
+	
 }

@@ -1,6 +1,7 @@
 package grafos;
 
 import java.util.HashSet;
+import java.util.Random;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -16,9 +17,32 @@ public class Grafo {
 		E = new TreeSet<Arista>();
 	}
 
+	// Constructor para Grafo Aleatorio
+	public Grafo(int vertices, int aristas) {
+
+		int aristasMAX = (2 * vertices) - vertices;
+
+		if (aristas > aristasMAX)
+			throw new IllegalArgumentException("El numero de aristas ingresadas no puede ser mayor a: " + aristasMAX);
+
+		A = new Arista[vertices][vertices];
+		E = new TreeSet<Arista>();
+		Random random = new Random();
+		int i = 0;
+		while (i < aristas) {
+			int verticeOrigen = random.nextInt(vertices);
+			int verticeDestino = random.nextInt(vertices);
+
+			if (verticeOrigen != verticeDestino && A[verticeOrigen][verticeDestino] == null) {
+				this.agregarArista(verticeOrigen, verticeDestino);
+				i++;
+			}
+		}
+	}
+
 	// Agrega arista con un peso double random entre 0 y 1
 	public void agregarArista(int i, int j) {
-		
+
 		verificarVertice(i);
 		verificarVertice(j);
 		verificarLoop(i, j);
@@ -35,12 +59,11 @@ public class Grafo {
 		verificarVertice(j);
 		verificarLoop(i, j);
 
-		Arista nueva = new Arista(i, j, peso); 
+		Arista nueva = new Arista(i, j, peso);
 		A[i][j] = A[j][i] = nueva;
 		E.add(nueva);
 	}
-	
-	
+
 	public double pesoArista(int i, int j) {
 		return A[i][j].getPeso();
 	}
@@ -66,7 +89,7 @@ public class Grafo {
 			E.remove(A[i][j]);
 		A[i][j] = null;
 		A[j][i] = null;
-		
+
 	}
 
 	public int tamanio() {
@@ -92,12 +115,12 @@ public class Grafo {
 		verificarVertice(i);
 		verificarVertice(j);
 		verificarLoop(i, j);
-		
+
 		return A[i][j] != null;
 	}
 
 	public Set<Arista> getAristas() {
 		return E;
 	}
-	
+
 }

@@ -40,7 +40,10 @@ public class Kruskal {
 
 		if (!BFS.esConexo(grafo))
 			throw new IllegalArgumentException("El grafo ingresado no es conexo, por lo tanto no posee AGM");
-
+		
+		if (grafo == null)
+			throw new IllegalArgumentException("El grafo ingresado no existe (null)");
+		
 		Grafo AGM = new Grafo(grafo.tamanio());
 		int i = 1;
 		
