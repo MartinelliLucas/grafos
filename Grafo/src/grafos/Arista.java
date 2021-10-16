@@ -2,26 +2,27 @@ package grafos;
 
 import java.util.concurrent.ThreadLocalRandom;
 
-public class Arista implements Comparable<Arista>{
+public class Arista implements Comparable<Arista> {
 	int verticeOrigen;
 	int verticeDestino;
 	double peso;
-	
-	public Arista(int verticeOrigen, int verticeDestino ) {
+
+	public Arista(int verticeOrigen, int verticeDestino) {
 		this.verticeOrigen = verticeOrigen;
 		this.verticeDestino = verticeDestino;
 		this.peso = ThreadLocalRandom.current().nextDouble(0, 1);
 	}
-	
+
 	public Arista(int verticeOrigen, int verticeDestino, double peso) {
 		this.verticeOrigen = verticeOrigen;
 		this.verticeDestino = verticeDestino;
 		this.peso = peso;
 	}
+
 	public double getPeso() {
 		return this.peso;
 	}
-	
+
 	public int getVerticeOrigen() {
 		return verticeOrigen;
 	}

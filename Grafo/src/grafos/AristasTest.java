@@ -6,7 +6,7 @@ import org.junit.Test;
 
 public class AristasTest {
 
-	//casos en los que se lanza excepcion
+	// casos en los que se lanza excepcion
 	@Test(expected = IllegalArgumentException.class)
 	public void primerVerticeNegativo() {
 		Grafo grafo = new Grafo(5);
@@ -60,7 +60,7 @@ public class AristasTest {
 		assertFalse(grafo.existeArista(1, 4)); // esta linea significa que lo qe hay dentro del parentesis debe dar
 												// false
 	}
-	
+
 	@Test
 	public void eliminarAristaExistente() {
 		Grafo grafo = new Grafo(5);
@@ -68,42 +68,31 @@ public class AristasTest {
 		grafo.eliminarArista(2, 3);
 		assertFalse(grafo.existeArista(2, 3));
 	}
-	
+
 	@Test
 	public void eliminarAristaInexistente() {
 		Grafo grafo = new Grafo(5);
 		grafo.eliminarArista(2, 3);
 		assertFalse(grafo.existeArista(3, 2));
 	}
-	
+
 	@Test
 	public void eliminarAristaExistenteDosVeces() {
 		Grafo grafo = new Grafo(5);
 		grafo.agregarArista(2, 3);
-		
+
 		grafo.eliminarArista(2, 3);
 		grafo.eliminarArista(2, 3);
 		assertFalse(grafo.existeArista(2, 3));
 	}
+
 	@Test
 	public void agregarAristaDosVeces() {
 		Grafo grafo = new Grafo(5);
 		grafo.agregarArista(2, 3);
 		grafo.agregarArista(2, 3);
-		
+
 		assertTrue(grafo.existeArista(2, 3));
 	}
-	
-	@Test
-	public void elementosConjuntos() {
-		Grafo g = new Grafo(3);
-		g.agregarAristaConPeso(0, 1, 30);
-		g.agregarAristaConPeso(1, 2, 10);
-		g.agregarAristaConPeso(2, 0, 5);
-		
-		for (Arista arista : g.getAristas()) {
-			System.out.println(arista.getPeso());
-			
-		}
-	}
+
 }

@@ -6,50 +6,20 @@ import grafos.Grafo;
 
 public class Kruskal {
 
-	public static Grafo aplicarKruskal(Grafo grafo) {
-
-		Grafo AGM = new Grafo(grafo.tamanio());
-		int i = 1;
-		int posX = 0;
-		int posY = 0;
-		double pesoMin = 1;
-		while (i <= grafo.tamanio() - 1) {
-			for (int k = 0; k < grafo.tamanio(); k++) {
-				for (int j = 0; j < grafo.tamanio(); j++) {
-					if (k == j) {
-						continue;
-					}
-					if (grafo.pesoArista(k, j) < pesoMin && k != j) {
-						pesoMin = grafo.pesoArista(k, j);
-						posX = k;
-						posY = j;
-
-						if (!BFS.alcanzables(AGM, posX).contains(posY)) {
-							AGM.agregarAristaConPeso(posX, posY, pesoMin);
-						}
-					}
-				}
-			}
-			i++;
-		}
-
-		return AGM;
-	}
-
 	public static Grafo kruskalBFS(Grafo grafo) {
 
 		if (!BFS.esConexo(grafo))
 			throw new IllegalArgumentException("El grafo ingresado no es conexo, por lo tanto no posee AGM");
-		
+
 		if (grafo == null)
 			throw new IllegalArgumentException("El grafo ingresado no existe (null)");
-		
+
 		Grafo AGM = new Grafo(grafo.tamanio());
 		int i = 1;
-		
+
 		while (i <= grafo.tamanio() - 1) {
 			for (Arista arista : grafo.getAristas()) {
-				
+
 				int verticeDestino = arista.getVerticeDestino();
 				int verticeOrigen = arista.getVerticeOrigen();
 				double peso = arista.getPeso();
@@ -59,6 +29,32 @@ public class Kruskal {
 				}
 				i++;
 			}
+		}
+		return AGM;
+	}
+
+	public static Grafo kruskalUnionFind(Grafo grafo) {
+		if (!BFS.esConexo(grafo))
+			throw new IllegalArgumentException("El grafo ingresado no es conexo, por lo tanto no posee AGM");
+
+		if (grafo == null)
+			throw new IllegalArgumentException("El grafo ingresado no existe (null)");
+
+		Grafo AGM = new Grafo(grafo.tamanio());
+		UnionFind UF = new UnionFind(grafo.tamanio());
+		int i = 1;
+		while (i <= grafo.tamanio() - 1) {
+			for (Arista arista : grafo.getAristas()) {
+				int verticeDestino = arista.getVerticeDestino();
+				int verticeOrigen = arista.getVerticeOrigen();
+				double peso = arista.getPeso();
+				if (!UF.find(verticeOrigen, verticeDestino)) {
+					UF.Union(verticeOrigen, verticeDestino);
+					AGM.agregarAristaConPeso(verticeOrigen, verticeDestino, peso);
+				}
+
+			}
+			i++;
 		}
 		return AGM;
 	}
