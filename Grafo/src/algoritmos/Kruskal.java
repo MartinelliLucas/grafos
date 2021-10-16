@@ -9,11 +9,7 @@ public class Kruskal {
 	public static Grafo kruskalBFS(Grafo grafo) {
 
 
-		if (!BFS.esConexo(grafo))
-			throw new IllegalArgumentException("El grafo ingresado no es conexo, por lo tanto no posee AGM");
-
-		if (grafo == null)
-			throw new IllegalArgumentException("El grafo ingresado no existe (null)");
+		verificarGrafo(grafo);
 
 		Grafo AGM = new Grafo(grafo.tamanio());
 		int i = 1;
@@ -36,11 +32,7 @@ public class Kruskal {
 
 	public static Grafo kruskalUnionFind(Grafo grafo) {
 
-		if (!BFS.esConexo(grafo))
-			throw new IllegalArgumentException("El grafo ingresado no es conexo, por lo tanto no posee AGM");
-
-		if (grafo == null)
-			throw new IllegalArgumentException("El grafo ingresado no existe (null)");
+		verificarGrafo(grafo);
 
 		Grafo AGM = new Grafo(grafo.tamanio());
 		UnionFind UF = new UnionFind(grafo.tamanio());
@@ -60,6 +52,14 @@ public class Kruskal {
 			i++;
 		}
 		return AGM;
+	}
+
+	private static void verificarGrafo(Grafo grafo) {
+		if (!BFS.esConexo(grafo))
+			throw new IllegalArgumentException("El grafo ingresado no es conexo, por lo tanto no posee AGM");
+
+		if (grafo == null)
+			throw new IllegalArgumentException("El grafo ingresado no existe (null)");
 	}
 
 }

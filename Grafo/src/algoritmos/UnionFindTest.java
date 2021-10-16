@@ -1,15 +1,10 @@
 package algoritmos;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import static org.junit.Assert.*;
+import org.junit.Test;
 
 class UnionFindTest {
 
-	@BeforeEach
-	void setUp() throws Exception {
-	}
 
 	@Test
 	public void testUnion() {
