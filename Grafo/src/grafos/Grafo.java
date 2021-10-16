@@ -20,15 +20,18 @@ public class Grafo {
 	// Constructor para Grafo Aleatorio
 	public Grafo(int vertices, int aristas) {
 
-		int aristasMAX = (2 * vertices) - vertices;
+		int aristasMAX = (vertices * vertices - vertices) / 2;
 
 		if (aristas > aristasMAX)
-			throw new IllegalArgumentException("El numero de aristas ingresadas no puede ser mayor a: " + aristasMAX);
+			throw new IllegalArgumentException(
+					"El numero de aristas ingresadas no puede ser mayor a: " 
+			+ aristasMAX + " para vertices = " + vertices);
 
 		A = new Arista[vertices][vertices];
 		E = new TreeSet<Arista>();
 		Random random = new Random();
 		int i = 0;
+		
 		while (i < aristas) {
 			int verticeOrigen = random.nextInt(vertices);
 			int verticeDestino = random.nextInt(vertices);
@@ -39,6 +42,7 @@ public class Grafo {
 			}
 		}
 	}
+	
 
 	// Agrega arista con un peso double random entre 0 y 1
 	public void agregarArista(int i, int j) {

@@ -8,6 +8,7 @@ public class Kruskal {
 
 	public static Grafo kruskalBFS(Grafo grafo) {
 
+
 		if (!BFS.esConexo(grafo))
 			throw new IllegalArgumentException("El grafo ingresado no es conexo, por lo tanto no posee AGM");
 
@@ -34,6 +35,7 @@ public class Kruskal {
 	}
 
 	public static Grafo kruskalUnionFind(Grafo grafo) {
+
 		if (!BFS.esConexo(grafo))
 			throw new IllegalArgumentException("El grafo ingresado no es conexo, por lo tanto no posee AGM");
 
@@ -45,6 +47,7 @@ public class Kruskal {
 		int i = 1;
 		while (i <= grafo.tamanio() - 1) {
 			for (Arista arista : grafo.getAristas()) {
+
 				int verticeDestino = arista.getVerticeDestino();
 				int verticeOrigen = arista.getVerticeOrigen();
 				double peso = arista.getPeso();

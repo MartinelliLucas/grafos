@@ -95,4 +95,18 @@ public class AristasTest {
 		assertTrue(grafo.existeArista(2, 3));
 	}
 
+	
+	@Test
+	public void elementosConjuntos() {
+		Grafo g = new Grafo(3);
+		g.agregarAristaConPeso(0, 1, 30);
+		g.agregarAristaConPeso(1, 2, 10);
+		g.agregarAristaConPeso(2, 0, 5);
+		
+		for (Arista arista : g.getAristas()) {
+			System.out.println(arista.getPeso());
+			
+		}
+	}
+	
 }
