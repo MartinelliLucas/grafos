@@ -106,4 +106,10 @@ public class AristasTest {
 			
 		}
 	}
+	
+//	@Test
+//	public void aristasRandomGeneradas() {
+//		Grafo gRandom = new Grafo(4,6);
+//		assertEquals()
+//	}
 }
