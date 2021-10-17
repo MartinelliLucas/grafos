@@ -17,7 +17,7 @@ public class Grafo {
 		E = new TreeSet<Arista>();
 	}
 
-	// Constructor para Grafo Aleatorio
+	// Constructor para Grafo Aleatorio con Aristas de peso aleatorio
 	public Grafo(int vertices, int aristas) {
 
 		int aristasMAX = (vertices * vertices - vertices) / 2;
