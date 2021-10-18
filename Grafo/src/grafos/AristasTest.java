@@ -103,10 +103,7 @@ public class AristasTest {
 		g.agregarAristaConPeso(1, 2, 10);
 		g.agregarAristaConPeso(2, 0, 5);
 		
-		for (Arista arista : g.getAristas()) {
-			System.out.println(arista.getPeso());
-			
-		}
+		assertFalse(g.getAristas().size() == 0);
 	}
 	
 }
