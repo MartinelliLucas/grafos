@@ -3,7 +3,7 @@ package algoritmos;
 import static org.junit.Assert.*;
 import org.junit.Test;
 
-class UnionFindTest {
+public class UnionFindTest {
 
 
 	@Test
