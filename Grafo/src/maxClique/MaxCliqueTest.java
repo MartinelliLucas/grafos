@@ -14,7 +14,7 @@ class MaxCliqueTest {
 
 	@Test
 	public void cliqueTresTest() {
-		FuerzaBruta resolver = new FuerzaBruta(trianguloConAntena());
+		Solver resolver = new Solver(trianguloConAntena());
 		Set <Integer> obtenido = resolver.cliqueMaxima();
 		int [] esperado = {0, 1, 2};
 		
@@ -23,7 +23,7 @@ class MaxCliqueTest {
 	@Test
 	public void aisladoTest() {
 		Grafo aislado = new Grafo (5);
-		FuerzaBruta resolver = new FuerzaBruta(aislado);
+		Solver resolver = new Solver(aislado);
 		Set <Integer> obtenido = resolver.cliqueMaxima();
 		
 		
@@ -33,7 +33,7 @@ class MaxCliqueTest {
 	@Test
 	public void completoTest() {
 
-		FuerzaBruta resolver = new FuerzaBruta(completo());
+		Solver resolver = new Solver(completo());
 		Set <Integer> obtenido = resolver.cliqueMaxima();
 		int [] esperado = {0, 1, 2, 3};
 

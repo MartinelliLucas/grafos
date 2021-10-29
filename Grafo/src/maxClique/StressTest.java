@@ -8,9 +8,9 @@ public class StressTest {
 
 	public static void main(String[] args) {
 
-		for (int n = 2; n < 50; n++) {
+		for (int n = 2; n < 500; n++) {
 			long inicio = System.currentTimeMillis();
-			FuerzaBruta resolver = new FuerzaBruta(aleatorio(n));
+			Solver resolver = new Solver(aleatorio(n));
 			resolver.cliqueMaxima();
 			long fin = System.currentTimeMillis();
 			double tiempo = (fin - inicio) / 1000.0;
