@@ -42,15 +42,16 @@ public class Solver {
 			}
 			return;
 		}
+		//caso recursivo
+		actual.add(vertice);
 		// caso base 2 : no es clique
-		else if (Auxiliares.esClique(grafo, actual)) {
-			//caso recursivo
-			actual.add(vertice);
-			generarDesde(vertice + 1);
-	
-			actual.remove(vertice);
+		if (Auxiliares.esClique(grafo, actual)) {
+			
 			generarDesde(vertice + 1);
 		}
+			actual.remove(vertice);
+			generarDesde(vertice + 1);
+		
 	}
 
 	private Set<Integer> clonar(Set<Integer> conjunto) {
